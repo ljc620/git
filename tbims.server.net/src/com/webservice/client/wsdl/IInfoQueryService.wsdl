@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IInfoQueryService" targetNamespace="http://infoQuery.webservice.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://infoQuery.webservice.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://infoQuery.webservice.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://infoQuery.webservice.com/">
+  <xs:element name="getCurrentSaleCheckin" type="tns:getCurrentSaleCheckin"/>
+  <xs:element name="getCurrentSaleCheckinResponse" type="tns:getCurrentSaleCheckinResponse"/>
+  <xs:element name="getSaleCheckinByDate" type="tns:getSaleCheckinByDate"/>
+  <xs:element name="getSaleCheckinByDateResponse" type="tns:getSaleCheckinByDateResponse"/>
+  <xs:complexType name="getCurrentSaleCheckin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCurrentSaleCheckinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:saleCheckEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saleCheckEntity">
+    <xs:sequence>
+      <xs:element name="checkinCount" type="xs:int"/>
+      <xs:element name="saleCount" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSaleCheckinByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSaleCheckinByDateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:saleCheckEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CXFException" type="tns:CXFException"/>
+  <xs:complexType name="CXFException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errinfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="errcode" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CXFException">
+    <wsdl:part name="CXFException" element="tns:CXFException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSaleCheckinByDate">
+    <wsdl:part name="parameters" element="tns:getSaleCheckinByDate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCurrentSaleCheckin">
+    <wsdl:part name="parameters" element="tns:getCurrentSaleCheckin">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCurrentSaleCheckinResponse">
+    <wsdl:part name="parameters" element="tns:getCurrentSaleCheckinResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSaleCheckinByDateResponse">
+    <wsdl:part name="parameters" element="tns:getSaleCheckinByDateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IInfoQuery">
+    <wsdl:operation name="getCurrentSaleCheckin">
+      <wsdl:input name="getCurrentSaleCheckin" message="tns:getCurrentSaleCheckin">
+    </wsdl:input>
+      <wsdl:output name="getCurrentSaleCheckinResponse" message="tns:getCurrentSaleCheckinResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSaleCheckinByDate">
+      <wsdl:input name="getSaleCheckinByDate" message="tns:getSaleCheckinByDate">
+    </wsdl:input>
+      <wsdl:output name="getSaleCheckinByDateResponse" message="tns:getSaleCheckinByDateResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IInfoQueryServiceSoapBinding" type="tns:IInfoQuery">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCurrentSaleCheckin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCurrentSaleCheckin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCurrentSaleCheckinResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSaleCheckinByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSaleCheckinByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSaleCheckinByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IInfoQueryService">
+    <wsdl:port name="IInfoQueryPort" binding="tns:IInfoQueryServiceSoapBinding">
+      <soap:address location="http://localhost:9090/IInfoQueryPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

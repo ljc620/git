@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="远程部署" default="make_WAR">
+	<target name="remote_dist" description="远程的部署" depends="make_WAR">
+		<scp file="dist/tbims.server.net.war" todir="tomtest@192.168.0.22:/home/tomtest/apache-tomcat-7.0.73/webapps" password="tomtest" trust="true" />
+	</target>
+
+	<target name="make_WAR" description="create rtx_web.jar">
+		<delete file="dist/tbims.server.net.war" />
+		<jar destfile="dist/tbims.server.net.war">
+			<fileset dir="WebContent" id="webContent">
+				<include name="**" />
+			</fileset>
+			<zipfileset dir="build/classes" id="classes" prefix="WEB-INF/classes">
+				<include name="**" />
+				<exclude name="WEB-INF/classes/test/**" />
+				<exclude name="test/**" />
+			</zipfileset>
+		</jar>
+	</target>
+
+	<!--
+如果报jsch的错误,则需要:port="2522" 
+从http://www.jcraft.com/jsch/下载  jsch-0.1.42.jar 
+把下载的jsch jar文件拷贝到 ANT_HOME/lib里，
+如果通过eclipse执行ant的话，可以通过
+Windows -> Preferences -> Classpath -> Ant Home Entries : Add External JARs
+把刚下载的jsch jar文件加到ant path里，然后就可以使用了。
+-->
+</project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop" 
+ xmlns:context="http://www.springframework.org/schema/context" 
+ xmlns:tx="http://www.springframework.org/schema/tx" 
+ xmlns:task="http://www.springframework.org/schema/task" 
+ xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+           http://www.springframework.org/schema/task  
+           http://www.springframework.org/schema/task/spring-task-4.2.xsd 
+           http://cxf.apache.org/jaxws 
+           http://cxf.apache.org/schema/jaxws.xsd">
+           
+<!-- <bean id="client" class="demo.spring.service.HelloWorld" factory-bean="clientFactory" factory-method="create"/> -->
+<!--     <bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean"> -->
+<!--         <property name="serviceClass" value="demo.spring.service.HelloWorld"/> -->
+<!--         <property name="address" value="http://localhost:9002/services/HelloWorld"/> -->
+<!--     </bean> -->
+    
+	<!-- spring 扫描注解包service dao层 -->
+	<context:component-scan base-package="com">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+
+	<context:component-scan base-package="test">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+
+	<!-- spring 异常捕获 -->
+	<bean id="exceptionHandler" class="com.zhming.support.exception.MyExceptionHandler" />
+
+	<bean id="SpringContextUtil " class="com.zhming.support.init.SpringContextUtil" scope="singleton" />
+	
+	<task:annotation-driven scheduler="qbScheduler" mode="proxy" />
+	<task:scheduler id="qbScheduler" pool-size="10" />
+</beans>
