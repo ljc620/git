@@ -1,0 +1,13 @@
+修改linux系统配值（最多的线程个数）
+/etc/security/limits.conf
+
+tbims      hard    nproc     16384
+tbims      soft    nproc     5120
+tbims      hard    nofile    65536
+tbims      soft    nofile    5121
+tbims      hard    stack     32768
+tbims      soft    stack     10240
+
+
+退出当前用户，重新登录即可让之前修改的limits生效，执行如下命令发现修改成功
+ulimit -u  

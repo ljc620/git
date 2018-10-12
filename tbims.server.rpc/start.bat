@@ -1,0 +1,1 @@
+java -Xms1024m -Xmx15000m -XX:PermSize=512m -XX:MaxNewSize=512m -XX:MaxPermSize=512m -jar tbims.server.rpc-20170629.jar >> tbims.log 2>&1
