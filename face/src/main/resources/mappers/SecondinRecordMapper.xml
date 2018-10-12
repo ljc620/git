@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tbims.face.dao.SecondinRecordDao">
+	<insert id="add">
+		insert into 
+			SL_SECONDIN_RECORD
+			values
+			(
+				#{recordId,jdbcType=VARCHAR},
+				#{regId,jdbcType=VARCHAR},
+				#{clientId,jdbcType=NUMERIC},
+				#{matchType,jdbcType=NUMERIC},
+				#{macthTime,jdbcType=TIME},
+				#{macthScort,jdbcType=NUMERIC}
+			)
+	
+	</insert>
+	
+	
+	<select id="findByRegid" resultType="com.tbims.face.entity.SecondinRecord" parameterType="string">
+    	select 
+			*
+		from 
+			SL_SECONDIN_RECORD
+		where 
+			REGID = #{regid}
+    </select>
+	
+
+
+</mapper>
+
+
+
+
+
+
+

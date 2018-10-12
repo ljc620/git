@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tbims.face.dao.ClientDao">
+	<select id="findByClient" parameterType="com.tbims.face.entity.Client" resultType="com.tbims.face.entity.Client">
+		select 
+			CLIENT_ID as clientId ,
+			TOKEN as token 
+		from 
+			SYS_CLIENT
+		where
+			CLIENT_ID = #{clientId} and TOKEN = #{token} 
+	
+	</select>
+	
+
+
+</mapper>
+
+
+
+
+
+
+
