@@ -1,0 +1,11 @@
+/**index.wxss**/
+
+.no-bound {
+  margin-top: 10px;
+  padding:  15px 10px;
+  background-color: white;
+}
+
+.van-cell {
+  background-color: transparent !important;
+}

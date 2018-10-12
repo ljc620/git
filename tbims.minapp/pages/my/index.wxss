@@ -1,0 +1,30 @@
+/* pages/my/my.wxss */
+.user-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+.cell-group {
+  margin-top: 20px;
+}
+.disabled-title {
+  color: lightgray
+}
+
+
+.weui-badge {
+    display: inline-block;
+    padding: .15em .4em;
+    min-width: 8px;
+    border-radius: 18px;
+    background-color: #E64340;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-align: center;
+    font-size: 9px;
+    vertical-align: middle;
+}
+.weui-badge_dot {
+    padding: .4em;
+    min-width: 0;
+}

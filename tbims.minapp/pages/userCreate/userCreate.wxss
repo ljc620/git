@@ -1,0 +1,28 @@
+/* pages/userbound/userbound.wxss */ 
+.title {
+  align-items: left;
+  font-weight: bold;
+  font-size: 20pt;
+  padding-bottom: 80rpx;
+  padding-top: 50rpx;
+  text-align: center;
+}
+.form-group {
+  margin-top: 15px;
+}
+.captcha-input {
+  margin-right: 90px !important;
+}
+.captcha-image{
+  width: 110px;
+  height:35px;
+  position: absolute;
+  top:4px;
+  right:0;
+}
+.weui-agree{display:block;padding:.5em 15px;font-size:13px}
+.weui-agree__text{color:#999}
+.weui-agree__link{display:inline;color:#586c94}
+.weui-agree__checkbox{position:absolute;left:-9999px}
+.weui-agree__checkbox-icon{position:relative;top:2px;display:inline-block;border:1px solid #d1d1d1;background-color:#fff;border-radius:3px;width:11px;height:11px}
+.weui-agree__checkbox-icon-check{position:absolute;top:1px;left:1px}

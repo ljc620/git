@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-cell-group": "/vendor/vant-weapp/cell-group/index",
+    "van-field": "/vendor/vant-weapp/field/index",
+    "van-button": "/vendor/vant-weapp/button/index"
+  }
+}

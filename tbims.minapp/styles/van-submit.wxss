@@ -1,0 +1,37 @@
+
+.van-submit-bar {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  user-select: none;
+}
+.van-submit-bar__tip {
+  color: #f85;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  background-color: #fff7cc;
+}
+
+.van-submit-bar__bar {
+  height: 50px;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  background-color: white;
+}
+.van-submit-bar__text {
+  flex: 1;
+  font-weight: 500;
+  text-align: right;
+  color: #333;
+  padding-right: 12px;
+}
+.van-submit-bar__text  {
+  display: inline-block;
+}
+.van-submit-bar__button {
+  width: 110px;
+}

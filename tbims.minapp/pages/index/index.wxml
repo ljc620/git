@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper autoplay="{{ true }}" indicator-dots="{{ true }}" >
+    <block wx:for="{{imgUrls}}" wx:key='swiper-{{index}}'>
+      <swiper-item>
+        <image src="{{item}}" mode='scaleToFill' style='width:100%;height:150px;'/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view wx:if='{{ user.userInfo }}'>
+    
+  </view>
+  
+  <navigator url="/pages/a-test/test" style='margin: 10px;color:blue;'>新功能测试页</navigator>
+</view>

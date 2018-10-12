@@ -1,0 +1,21 @@
+<!--pages/my/my.wxml-->
+<view>
+  <van-cell-group>
+    <van-cell>
+      <view slot="icon">
+        <image class="user-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      </view>
+      <view slot="title" style='margin: 5px 0 0 20px;'>
+        <view>{{user.userInfo.name}}</view>
+        <view style='color:gray;font-size:9pt;'>用户名:{{user.userInfo.username}}</view>
+      </view>
+    </van-cell>
+  </van-cell-group>
+
+  <van-cell-group custom-class="cell-group">
+    <van-cell title="刷新数据" icon='edit-data' title-class='{{ !canRefreshData?"disabled-title":""}}' bind:click='btnRefresh'/>
+    <van-cell title="关于" icon='info-o' is-link/>
+  </van-cell-group>
+
+  <!-- <button disabled='{{ !canRefreshData }}' bindtap='btnRefresh'>清除缓存</button> -->
+</view>

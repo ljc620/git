@@ -1,0 +1,32 @@
+<!--pages/userbound/userbound.wxml-->
+<view class="container">
+  <view class='title'>
+    <text>新建账户</text>
+  </view>
+
+  <van-cell-group custom-class="form-group">
+    <van-field id="phoneNumber" value="{{ phoneNumber }}" label="用户名" placeholder="请输入手机号"
+      error-message="" required maxlength="11" type="number" clearable bind:change="onInputChange"/>
+    <van-field id="smsCaptcha" value="{{ smsCaptcha }}" center clearable label="短信验证码" required
+      placeholder="请输入短信验证码" border="{{ false }}" type="number" use-button-slot bind:change="onInputChange">
+      <van-button slot="button" size="small" type="primary" disabled="{{btnSendSmsDisabled}}"
+        bind:click="sendSmsCaptche">{{ btnSendSmsText }}</van-button>
+    </van-field>
+  </van-cell-group>
+  <checkbox-group bindchange="bindAgreeChange">
+    <label class="weui-agree" for="weuiAgree">
+      <view class="weui-agree__text">
+        <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+        <view class="weui-agree__checkbox-icon">
+          <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+        </view>
+        阅读并同意<navigator url="/pages/privacyPolicy/privacyPolicy" class="weui-agree__link">《服务条款和隐私声明》</navigator>
+      </view>
+    </label>
+  </checkbox-group>
+  <view>
+  </view>
+  <view style="padding:15px;">
+    <button type="primary" open-type="getUserInfo" size='default' bindgetuserinfo='btnBoundSubmit'>提交</button>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/a-test/test.wxml-->
+
+<view>
+  <text>pages/a-test/test.wxml</text>
+  <view class="userinfo" wx:if="{{ user.userInfo }}">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    <view class="usermotto">
+      <text class="user-motto">{{user.userInfo.username}}</text>
+    </view>
+  </view>
+  <text>Cookie:{{ user.token }}</text>
+  <button bindtap='btnChange' style='margin-top:20px;'>Store,Computed,Watch测试</button>
+  <text>{{ user.roles[0] }}</text>
+  <text>{{ a }}/{{ c }}</text>
+  <button disabled='{{ !canRefreshData }}' bindtap='btnRefresh'>清除缓存</button>
+
+  <navigator url="/pages/userCreate/userCreate">新建用户</navigator>
+</view>
