@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="SelfHelpSystem.MainWindow" Title="自助售票机系统" Height="900" Width="1600" WindowStartupLocation="Manual" WindowState="Maximized" Background="#00FFFFFF" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded" Closed="Window_Closed" KeyUp="Window_KeyUp" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="#00FFFFFF">
+    <Canvas Name="mainCanvas" Width="1080" Height="1920">
+      <Label Name="lblSecond" FontSize="50" Canvas.Left="475" Canvas.Top="1735" Panel.ZIndex="1000" HorizontalContentAlignment="Center" Width="150" />
+      <Grid Name="mainGrid" Width="1080" Height="1920">
+        <Grid.RowDefinitions>
+          <RowDefinition Name="row1" Height="608" />
+          <RowDefinition Name="row2" Height="662" />
+          <RowDefinition Name="row3" Height="650" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <WrapPanel Name="TopPanel" Grid.Row="0" Orientation="Vertical" MouseDown="TopPanel_MouseDown" MouseUp="TopPanel_MouseUp">
+          <Frame Name="topFrame" NavigationUIVisibility="Hidden" />
+                </WrapPanel>
+        <WrapPanel Name="MiddlePanel" Grid.Row="1" Orientation="Vertical">
+          <Frame Name="middleFrame" NavigationUIVisibility="Hidden" />
+        </WrapPanel>
+        <DockPanel Name="BottomPanel" Grid.Row="2" >
+            <Frame Name="mainFrame" NavigationUIVisibility="Hidden" Margin="0,0,0,0" />
+        </DockPanel>
+      </Grid>
+    </Canvas>
+  </ScrollViewer>
+</Window>

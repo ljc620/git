@@ -1,0 +1,58 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="SelfHelpSystem.Page_Setting" 
+      mc:Ignorable="d" Title="Page_Setting" Height="650" Width="1080" Loaded="Page_Loaded">
+
+
+    <!--<Grid>
+        
+    </Grid>-->
+    <Page.Background>
+        <ImageBrush ImageSource="pic/bg.jpg" Opacity="10"/>
+    </Page.Background>
+    <WrapPanel Height="450" Width="760">
+
+        <!--<Label Name="la_ip" Content="服务地址:" Height="30" Width="80"  HorizontalAlignment="Left"></Label>
+        <TextBox Name="txt_ip" Height="30" Width="180" HorizontalAlignment="Left"></TextBox>
+        <Label Name="la_port" Content="端口号:" Height="30" Width="80"></Label>
+        <TextBox Name="txt_port" Height="30" Width="180"></TextBox>
+        <Label Name="la_token" Content="授权码:" Height="30" Width="80"></Label>
+        <TextBox Name="txt_token" Height="30" Width="180"></TextBox>
+        <Label Name="la_timeout" Content="超时设置:" Height="30" Width="80"></Label>
+        <ComboBox Name="com_test" Height="30" Width="180"></ComboBox>-->
+        <Label x:Name="la_teicket1" Content="一号票箱：" Height="35" Width="120" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <ComboBox x:Name="look_Ticket1" Width="200" Margin="10" Height="50" FontSize="22"/>
+        <Label x:Name="la_ticket2" Content="二号票箱：" Height="35" Width="120" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <ComboBox x:Name="look_Ticket2" Width="200" Margin="10" FontSize="22"/>
+        <Label x:Name="la_ACount" Height="35" Width="120" Content="放入票数:" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_ACount" Height="50" Width="200"  KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22"/>
+        <Label x:Name="la_BCount" Height="35" Width="120" Content="放入票数:" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_BCount" Height="50" Width="200"  KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22"/>
+        <Label x:Name="la_AalarmCount" Height="35" Width="120" Content="报警票数:" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_AalarmCount" Height="50" Width="200" KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22"/>
+
+
+        <Label x:Name="la_BalarmCount" Height="35" Width="120" Content="报警票数：" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_BalarmCount" Height="50" Width="200" KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22"/>
+
+        <Label x:Name="la_AYuCount" Height="35" Width="120" Content="余票数量：" Foreground="Red" FontWeight="Bold" FontSize="22" Margin="10"/>
+        <TextBox x:Name="txt_AYuCount" Height="50" Width="200" KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22" IsReadOnly="True"/>
+
+        <Label x:Name="la_BYuCount" Height="35" Width="120" Content="余票数量：" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_BYuCount" Height="50" Width="200" KeyDown="txt_ACount_KeyDown" Margin="10" FontSize="22" IsReadOnly="True"/>
+
+        <Label x:Name="la_AbolishCount" Height="35" Width="120" Content="废票数量：" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10"/>
+        <TextBox x:Name="txt_AbolishCountt" Height="50" Width="200" KeyDown="txt_ACount_KeyDown" IsReadOnly="True" Margin="10" FontSize="22"/>
+
+        <CheckBox x:Name="check_Abolish" Content="是否重置废票数量----选中表示重置" FontSize="22" Foreground="Red" FontWeight="Bold" Margin="10" >
+        </CheckBox>
+
+        <Button x:Name="bt_Save" Width="260" Height="70" Content="保存设置" Click="bt_Save_Click" Margin="80,30,30,30" FontSize="30" RenderTransformOrigin="0.501,0.5"/>
+        <Button x:Name="bt_Cancel" Width="260" Height="70" Content="退出设置" Click="bt_Cancel_Click" Margin="50,30,30,30" FontSize="30"/>
+
+    </WrapPanel>
+
+</Page>

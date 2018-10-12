@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="SelfHelpSystem.ImageShowPage" Title="ImageShowPage" Loaded="Page_Loaded" Unloaded="Page_Unloaded" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:trans="clr-namespace:Transitionals;assembly=Transitionals"
+      xmlns:transc="clr-namespace:Transitionals.Controls;assembly=Transitionals"
+      xmlns:transt="clr-namespace:Transitionals.Transitions;assembly=Transitionals"
+      xmlns:refl="clr-namespace:System.Reflection;assembly=mscorlib"
+      Height="662" Width="1080">
+    <WrapPanel Orientation="Vertical" MouseDown="WrapPanel_MouseDown">
+        <transc:TransitionElement x:Name="mainp" Margin="0,0,0,0">
+            <transc:TransitionElement.TransitionSelector>
+                <trans:RandomTransitionSelector>
+                    <trans:RandomTransitionSelector.TransitionAssemblies>
+                        <refl:AssemblyName Name="Transitionals" />
+                    </trans:RandomTransitionSelector.TransitionAssemblies>
+                    <!--<transt:RotateTransition Angle="45" />
+                    <transt:RotateTransition Angle="25" />-->
+                </trans:RandomTransitionSelector>
+            </transc:TransitionElement.TransitionSelector>
+        </transc:TransitionElement>
+
+    </WrapPanel>
+</Page>
