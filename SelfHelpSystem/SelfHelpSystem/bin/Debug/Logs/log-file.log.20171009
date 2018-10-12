@@ -1,0 +1,44 @@
+2017-10-09 09:04:50,769 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:04:53,221 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 服务器连接失败!
+2017-10-09 09:04:53,221 [SelfHelpSystem] ERROR SelfHelpSystem.Client - SelfHelpSystem.MainWindow
+System.Exception: 服务器连接失败!
+   在 SelfHelpSystem.Tool.T_RpcClient..ctor(AUTHORIZATION auth, String var_host, Int32 var_port, Int32 var_timeout) 位置 C:\Users\zhuxy\Documents\Visual Studio 2015\Projects\SelfHelpSystem\SelfHelpSystem\Tool\T_RpcClient.cs:行号 92
+   在 SelfHelpSystem.MainWindow.Window_Loaded(Object sender, RoutedEventArgs e) 位置 C:\Users\zhuxy\Documents\Visual Studio 2015\Projects\SelfHelpSystem\SelfHelpSystem\MainWindow.xaml.cs:行号 275
+2017-10-09 09:06:32,203 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:06:32,608 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:06:32,608 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:08:32,908 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:08:33,355 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:08:33,356 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:09:28,892 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:09:29,352 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:09:29,360 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:13:34,960 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:13:35,387 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:13:35,387 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:14:34,965 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:14:35,411 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:14:35,411 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:14:53,764 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 图片加载超时!
+System.OutOfMemoryException: 引发类型为“System.OutOfMemoryException”的异常。
+   在 MS.Utility.ArrayItemList`1.Add(T value)
+   在 MS.Utility.FrugalStructList`1.Add(T value)
+   在 Transitionals.Transition3D.CreateMesh(Point3D origin, Vector3D vector1, Vector3D vector2, Int32 steps1, Int32 steps2, Rect textureBounds)
+   在 Transitionals.Transitions.PageTransition.BeginTransition3D(TransitionElement transitionElement, ContentPresenter oldContent, ContentPresenter newContent, Viewport3D viewport)
+   在 Transitionals.Transition3D.BeginTransition(TransitionElement transitionElement, ContentPresenter oldContent, ContentPresenter newContent)
+   在 Transitionals.Controls.TransitionElement.BeginTransition()
+   在 Transitionals.Controls.TransitionElement.OnContentChanged(Object element, DependencyPropertyChangedEventArgs e)
+   在 System.Windows.DependencyObject.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   在 System.Windows.FrameworkElement.OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+   在 System.Windows.DependencyObject.NotifyPropertyChange(DependencyPropertyChangedEventArgs args)
+   在 System.Windows.DependencyObject.UpdateEffectiveValue(EntryIndex entryIndex, DependencyProperty dp, PropertyMetadata metadata, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType)
+   在 System.Windows.DependencyObject.SetValueCommon(DependencyProperty dp, Object value, PropertyMetadata metadata, Boolean coerceWithDeferredReference, Boolean coerceWithCurrentValue, OperationType operationType, Boolean isInternal)
+   在 System.Windows.DependencyObject.SetValue(DependencyProperty dp, Object value)
+   在 Transitionals.Controls.TransitionElement.set_Content(Object value)
+   在 SelfHelpSystem.ImageShowPage.SetContent1(BitmapImage image) 位置 C:\Users\zhuxy\Documents\Visual Studio 2015\Projects\SelfHelpSystem\SelfHelpSystem\ImageShowPage.xaml.cs:行号 173
+2017-10-09 09:17:56,275 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:17:56,729 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:17:56,729 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
+2017-10-09 09:26:06,938 [SelfHelpSystem] INFO  SelfHelpSystem.Client - MainWindow启动
+2017-10-09 09:26:07,434 [SelfHelpSystem] INFO  SelfHelpSystem.Client - 数据同步工作线程启动成功。
+2017-10-09 09:26:07,434 [SelfHelpSystem] ERROR SelfHelpSystem.Client - 强制回收线程启动成功!
