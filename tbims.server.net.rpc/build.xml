@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<project name="tbims.server.rpc" default="run" basedir=".">
+	<property name="version" value="20170629" />
+
+	<property name="conf.dir" location="conf" />
+	<property name="lib.dir" location="../tbims.server.rpc/lib" />
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+
+	<path id="project.class.path">
+		<pathelement path="${build}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<pathconvert property="libs.project" pathsep=" ">
+		<mapper>
+			<chainedmapper>
+				<!-- remove absolute path -->
+				<flattenmapper />
+				<!-- add lib/ prefix -->
+				<globmapper from="*" to="lib/*" />
+			</chainedmapper>
+		</mapper>
+		<path>
+			<!-- lib.home contains all jar files, in several subdirectories -->
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</pathconvert>
+
+
+	<target name="run" depends="init,compile,jar">
+	</target>
+
+	<target name="init">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+		<mkdir dir="${build}/classes" />
+		<mkdir dir="${dist}/lib" />
+		<mkdir dir="${dist}/conf" />
+		<copydir dest="${dist}/lib" src="${lib.dir}">
+		</copydir>
+		<copydir dest="${dist}/conf" src="${conf.dir}">
+		</copydir>
+
+		<copyfile dest="${dist}/restart.sh" src="restart.sh">
+		</copyfile>
+		<copyfile dest="${dist}/shutdown.sh" src="shutdown.sh">
+		</copyfile>
+		<copyfile dest="${dist}/start.sh" src="start.sh">
+		</copyfile>
+		<copyfile dest="${dist}/start.bat" src="start.bat">
+		</copyfile>
+
+	</target>
+
+	<target name="compile">
+		<javac srcdir="src" destdir="${build}/classes" debug="true"  encoding="UTF-8">
+			<classpath refid="project.class.path" />
+		</javac>
+	</target>
+
+	<target name="jar">
+		<jar destfile="${dist}/tbims.server.net.rpc-${version}.jar" update="true" basedir="${build}/classes">
+			<manifest>
+				<attribute name="Main-class" value="com.tbims.init.ServerMain" />
+				<attribute name="Class-Path" value="conf/ ${libs.project}" />
+			</manifest>
+		</jar>
+	</target>
+</project>
