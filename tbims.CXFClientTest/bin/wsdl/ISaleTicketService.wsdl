@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ISaleTicketService" targetNamespace="http://saleTicket.webservice.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://saleTicket.webservice.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://saleTicket.webservice.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://saleTicket.webservice.com/">
+  <xs:element name="GetTicketStatusByOrderID" type="tns:GetTicketStatusByOrderID"/>
+  <xs:element name="GetTicketStatusByOrderIDResponse" type="tns:GetTicketStatusByOrderIDResponse"/>
+  <xs:element name="getTicketCountByID" type="tns:getTicketCountByID"/>
+  <xs:element name="getTicketCountByIDResponse" type="tns:getTicketCountByIDResponse"/>
+  <xs:element name="getTicketType" type="tns:getTicketType"/>
+  <xs:element name="getTicketTypeResponse" type="tns:getTicketTypeResponse"/>
+  <xs:element name="saleDateSync" type="tns:saleDateSync"/>
+  <xs:element name="saleDateSyncResponse" type="tns:saleDateSyncResponse"/>
+  <xs:element name="tradeRefund" type="tns:tradeRefund"/>
+  <xs:element name="tradeRefundResponse" type="tns:tradeRefundResponse"/>
+  <xs:complexType name="saleDateSync">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element name="arg3" type="xs:int"/>
+      <xs:element name="arg4" type="xs:long"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg6" type="tns:orderDetail"/>
+      <xs:element minOccurs="0" name="arg7" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg8" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg9" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="identityCode" type="xs:string"/>
+      <xs:element name="salePrice" type="xs:long"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ticketTypeID" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saleDateSyncResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tradeRefund">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element name="arg4" type="xs:int"/>
+      <xs:element name="arg5" type="xs:long"/>
+      <xs:element minOccurs="0" name="arg6" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg7" type="tns:refundTicket"/>
+      <xs:element minOccurs="0" name="arg8" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refundTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identityCode" type="xs:string"/>
+      <xs:element name="refundAMT" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tradeRefundResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetTicketStatusByOrderID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetTicketStatusByOrderIDResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ticketStatus"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ticketStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identityCode" type="xs:string"/>
+      <xs:element name="status" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketTypeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ticketType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ticketType">
+    <xs:sequence>
+      <xs:element name="price" type="xs:long"/>
+      <xs:element minOccurs="0" name="ticketTypeID" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketTypeName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketCountByID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getTicketCountByIDResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CXFException" type="tns:CXFException"/>
+  <xs:complexType name="CXFException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errinfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="errcode" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTicketCountByIDResponse">
+    <wsdl:part name="parameters" element="tns:getTicketCountByIDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saleDateSyncResponse">
+    <wsdl:part name="parameters" element="tns:saleDateSyncResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTicketCountByID">
+    <wsdl:part name="parameters" element="tns:getTicketCountByID">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetTicketStatusByOrderID">
+    <wsdl:part name="parameters" element="tns:GetTicketStatusByOrderID">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saleDateSync">
+    <wsdl:part name="parameters" element="tns:saleDateSync">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetTicketStatusByOrderIDResponse">
+    <wsdl:part name="parameters" element="tns:GetTicketStatusByOrderIDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CXFException">
+    <wsdl:part name="CXFException" element="tns:CXFException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTicketType">
+    <wsdl:part name="parameters" element="tns:getTicketType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTicketTypeResponse">
+    <wsdl:part name="parameters" element="tns:getTicketTypeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tradeRefundResponse">
+    <wsdl:part name="parameters" element="tns:tradeRefundResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tradeRefund">
+    <wsdl:part name="parameters" element="tns:tradeRefund">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ISaleTicket">
+    <wsdl:operation name="saleDateSync">
+      <wsdl:input name="saleDateSync" message="tns:saleDateSync">
+    </wsdl:input>
+      <wsdl:output name="saleDateSyncResponse" message="tns:saleDateSyncResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="tradeRefund">
+      <wsdl:input name="tradeRefund" message="tns:tradeRefund">
+    </wsdl:input>
+      <wsdl:output name="tradeRefundResponse" message="tns:tradeRefundResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketStatusByOrderID">
+      <wsdl:input name="GetTicketStatusByOrderID" message="tns:GetTicketStatusByOrderID">
+    </wsdl:input>
+      <wsdl:output name="GetTicketStatusByOrderIDResponse" message="tns:GetTicketStatusByOrderIDResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketType">
+      <wsdl:input name="getTicketType" message="tns:getTicketType">
+    </wsdl:input>
+      <wsdl:output name="getTicketTypeResponse" message="tns:getTicketTypeResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketCountByID">
+      <wsdl:input name="getTicketCountByID" message="tns:getTicketCountByID">
+    </wsdl:input>
+      <wsdl:output name="getTicketCountByIDResponse" message="tns:getTicketCountByIDResponse">
+    </wsdl:output>
+      <wsdl:fault name="CXFException" message="tns:CXFException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ISaleTicketServiceSoapBinding" type="tns:ISaleTicket">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="saleDateSync">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saleDateSync">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saleDateSyncResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="tradeRefund">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="tradeRefund">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tradeRefundResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketStatusByOrderID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="GetTicketStatusByOrderID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetTicketStatusByOrderIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketCountByID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTicketCountByID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTicketCountByIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTicketType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTicketTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CXFException">
+        <soap:fault name="CXFException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ISaleTicketService">
+    <wsdl:port name="ISaleTicketPort" binding="tns:ISaleTicketServiceSoapBinding">
+      <soap:address location="http://localhost:9090/ISaleTicketPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
