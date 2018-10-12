@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop" 
+ xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx" 
+  xmlns:task="http://www.springframework.org/schema/task" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd  
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-4.3.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+           http://www.springframework.org/schema/task 
+	       http://www.springframework.org/schema/task/spring-task-4.2.xsd
+           ">
+
+	<!-- spring 扫描注解包service dao层 -->
+	<context:component-scan base-package="com">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+		<context:exclude-filter type="annotation" expression="org.springframework.scheduling.annotation.EnableScheduling" />
+	</context:component-scan>
+
+	<context:component-scan base-package="test">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+	
+	<bean id="exceptionHandler" class="com.zhming.support.exception.MyExceptionHandler" />
+	
+	<bean id="SpringContextUtil " class="com.zhming.support.init.SpringContextUtil" scope="singleton" />
+	<task:annotation-driven scheduler="qbScheduler" mode="proxy" /> 
+		<task:scheduler id="qbScheduler" pool-size="10" />
+</beans>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/mvc   
+	http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	 http://www.springframework.org/schema/aop  
+     http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    ">
+
+	<!-- spring mvc扫描注解包 -->
+	<context:component-scan base-package="com">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<context:component-scan base-package="com.zhming.support.aop" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 默认的注解映射的支持,支持json自动转换 -->
+	<mvc:annotation-driven />
+
+	<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 最大文件大小，-1为无限止(-1),注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+		<property name="maxUploadSize" value="200971520" /><!-- 20MB -->
+		<!-- 设置在文件上传时允许写到内存中的最大值，以字节为单位计算，默认是10240 -->
+		<!-- 但是经实验，上传文件大小若小于此参数，则不会生成临时文件，很尴尬，故改为2048 -->
+		<property name="maxInMemorySize" value="1" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+				<ref bean="jsonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+     
+</beans>

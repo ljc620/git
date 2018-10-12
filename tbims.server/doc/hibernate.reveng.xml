@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+<type-mapping>
+	<sql-type jdbc-type="CHAR" hibernate-type="java.lang.String"></sql-type>
+	<sql-type jdbc-type="NUMERIC" hibernate-type="java.lang.Long"></sql-type>
+	<sql-type jdbc-type="BLOB" hibernate-type="byte[]"></sql-type>
+</type-mapping>
+<table-filter match-name="SL_ORG_TICKETTYPE" match-schema="TBIMS" />
+<table-filter match-name="SL_ORDER_DETAIL" match-schema="TBIMS" />
+<table-filter match-name="SL_ORG" match-schema="TBIMS" />
+
+</hibernate-reverse-engineering>

@@ -1,0 +1,54 @@
+---代码、注释格式化----------------------------------------------------------
+--------------java文件：
+
+导入 codetemplates.xml  和 fomatter.xml 
+
+设置：
+---codetemplates.xml 中 把 ydc 全部替换 自己的姓名---
+window>preferences>java>Code Style>Fomatter>import
+window>preferences>java>Code Style>Code Templates>import
+
+其中：
+maxinum line width  修改为 800
+set line width for preview window 修改为 800
+
+----------------jsp文件:
+
+设置
+Web>HTML Files>Editor : (Line width 设置成800）(其中 inline elment 中的  select、input、tb、th、 a 、li等去掉,使这些标签单独占一行)
+XML>XML Files>Editor  : Line width 设置成800
+
+----------------js文件
+
+导入 codetemplates.xml  和 fomatter.xml 
+
+设置：
+window>preferences>javascript>Code Style>Fomatter>import
+window>preferences>javascript>Code Style>Code Templates>import
+
+其中：
+maxinum line width  修改为 800
+set line width for preview window 修改为 800 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--js 文件出现红叉错误的解决方法---------------------------------------------------------
+选中工程>Project>Properties>JavaScript>Include Path>Source>Exclude:(None)再点 Edit>Add Multiple>把不验证的js文件添加进去
+
+
+--eclipse 快捷键---------------------------------------------------------
+ctrl+shift+x   转为大写     ctrl+shift+y   转为小写 
+ctrl+d  删除当前行
+
+
+
+
+
+
+
+
+
+
+
+
+

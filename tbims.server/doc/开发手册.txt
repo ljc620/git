@@ -1,0 +1,149 @@
+此项目待忧化的事情：
+数据库表设计：
+时间 和 日期  要分2个字段存储，是否有时间，按日期统计时trunc(时间字段)不走索引
+如 售票时间 （YYYY-MM-DD HH24:MI:SS） 售票日期 （YYYY-MM-DD）
+编码
+cs 或 bs 项目 提交后，一定要打开蒙板或禁用提交按，防止重复提交
+多线程同时或重复提交（或超时重复提交）时，对某一个表的字段进行增加、减少时，记得加锁，防止重复处理，即此操作不是按本次操作的主键，其它地方也可能有操作
+
+命名规范：
+addXXX 添加 
+updateXXX 修改
+deleteXXX 删除
+listXXX 查询列表
+queryXXX 查询列表
+
+开发规范：
+1. 每天下班前提交不报编译错误的代码
+2. 每天上班同步代码
+3. 类、变量名与数据库表、字段名保持一致，达到见名知义
+4. Controller层方法名与request请求名 保持一致
+
+// 这种有逻辑判断的要增加注释，1：XXXX  2:XXXX
+if(flag=='1'){
+
+}else{
+
+}
+
+5. Service层同时操作2张及以上张表时，一定要开启事务并关闭事务
+其中：查询直接dbUtil.方法名（第二个参数不是session的方法）即可
+如：
+       Session session = dbUtil.getSessionByTransaction();
+       try {
+			dbUtil.executeSql("", session, "update tb_sys_log set user_cd='aaa' ");
+			dbUtil.saveEntity("", session, taskType);
+			dbUtil.commit(session);
+		} finally {
+			dbUtil.close(session);
+		}
+		
+6. Service层方法参数为
+如：listTaskType(String sysCode, Integer page, Integer rows);
+
+7. DBUtil 中的方法第一个参数为 前辍，可为空
+如：dbUtil.count("验证系统代码和业务类型不能重复", "select * from daul");
+如：dbUtil.count("", "select * from daul");
+
+8. Service层、Controller层 都不要捕获异常交由spring AOP处理
+
+9. 代码凡是出现 根据固定值判断 业务逻辑的，都要注明 每项值代表的意思。 如下：
+// 是否允许个性化设置 personal_set 0:允许 1:不允许
+if (1 == CommonUtil.covertLong((taskType.get("personal_set")))) {
+	throw new ServiceException(MSG.BF_ERROR, "该系统的任务类型不允许进行个性化设置");
+}
+
+10. 权限控制
+后台Controller层：
+增加注解
+@ControlAspect(funtionCd = "i1_sys_jobtype_add", operType = OperType.ADD, havPrivs = true)
+funtionCd为TB_SYS_RES中的权限代码
+havPrivs = true 时会进行权限判断
+
+页面层
+
+<c:if test="${myel:hasPriv('i1_sys_jobtype_add',user.functionSet)}">
+					<li>
+						<a href="javascript:void(0)" class="red-btn icon-add" onclick="javascript:addTaskType();">
+							<span class="btn-text">添加任务类型</span>
+						</a>
+					</li>
+</c:if>
+
+11.  easyui 开发原则
+（1）加载easyui尽量不用class的方式，而是用js的方式，等页面加载完成后，再来加载easyui的组件。
+（2）加载easyui组件的时候，只加载需要显示的那部分组件，其他的先不加载
+
+-------------------------------------页面与后台交互----------------------begin--------------
+
+1. 使用 $.ajax 与后台交互
+
+前台
+$.ajax({
+		url : $ctx + "/sysRegister/listRegister.do",
+		data : "rows=0&page=0",
+		type : "post",
+		success : function(e) {
+			$("#sys_cd").combobox({
+				width : 150,
+				required : true,
+				editable : false,
+				valueField : 'sysCd',
+				textField : 'sysNm',
+				data : e.rows    
+			});
+
+		},
+		error : function(e) {
+			getAjaxError(e);   // 通过 @ControllerException 捕获异常返回 json 错误对象
+		}
+	});
+后台 
+@RequestMapping(value = "listTaskType")
+@ControlAspect(funtionCd = "", operType = OperType.QUERY)
+@ControllerException
+public PageBean<Map<String, Object>> listTaskType(String sysCode) {
+	PageBean<Map<String, Object>> jobTypeList = taskTypeService.listTaskType(getNavigation(), getLoginUserBean(), sysCode);
+	return jobTypeList;
+}
+
+
+2. easyui组件 datagrid combobox 等底层也是使用 $.ajax 交互
+所以与处理方式与$.ajax 一致,通过错误回调函数操作
+onLoadSuccess : function(e) {
+
+		},
+		onLoadError : function(e) {
+			getAjaxError(e);
+		},
+
+3. easyui组件 form 表单提交 无error 回调方法，处理如下：
+前台：
+$('#fm').form('submit', {
+				url : $ctx + url,
+				success : function(e) {
+					$.messager.progress("close");
+					if(!getFormError(e)){
+						return false;
+					}
+					
+					$('#taskTypeDialog').dialog('close');
+					$dg.datagrid('reload'); // 重载行
+					$dg.datagrid('clearSelections');
+					$.messager.show({
+						showType : 'slide',
+						title : "提示信息",
+						msg : '保存成功',
+						timeout : 2000
+					});
+				}
+			}, 'json');
+后台：
+@RequestMapping(value = "addTaskType")
+	@ControlAspect(funtionCd = "", operType = OperType.ADD)
+	@ControllerException
+	public void addTaskType(TbRtxTaskType taskType) throws ServiceException {
+		 taskTypeService.addTaskType(getNavigation(), getLoginUserBean(), taskType);
+}
+-------------------------------------页面与后台交互----------------------end--------------
+

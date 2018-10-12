@@ -1,0 +1,2 @@
+1. ComboBox（下拉列表框）使用input 渲染html里不要使用select 。
+2. easyui-dialog 和 其中 easyui-tabs  标签 高度宽度设置如下： width  相差 35 hight:90 ,使tabs出现滚动条，dialog不允许出现滚动条。
